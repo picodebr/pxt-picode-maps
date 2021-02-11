@@ -1,0 +1,78 @@
+CACHE MANIFEST
+
+CACHE:
+/pxt-picode-maps/semantic.js
+/pxt-picode-maps/main.js
+/pxt-picode-maps/pxtapp.js
+/pxt-picode-maps/typescript.js
+/pxt-picode-maps/marked/marked.min.js
+/pxt-picode-maps/highlight.js/highlight.pack.js
+/pxt-picode-maps/jquery.js
+/pxt-picode-maps/pxtlib.js
+/pxt-picode-maps/pxtcompiler.js
+/pxt-picode-maps/pxtpy.js
+/pxt-picode-maps/pxtblockly.js
+/pxt-picode-maps/pxtwinrt.js
+/pxt-picode-maps/pxteditor.js
+/pxt-picode-maps/pxtsim.js
+/pxt-picode-maps/pxtembed.js
+/pxt-picode-maps/pxtworker.js
+/pxt-picode-maps/pxtweb.js
+/pxt-picode-maps/blockly.css
+/pxt-picode-maps/semantic.css
+/pxt-picode-maps/rtlsemantic.css
+
+
+
+
+
+# blockly
+/pxt-picode-maps/blockly/media/sprites.png
+/pxt-picode-maps/blockly/media/click.mp3
+/pxt-picode-maps/blockly/media/disconnect.wav
+/pxt-picode-maps/blockly/media/delete.mp3
+
+# monaco; keep in sync with webapp/public/index.html
+/pxt-picode-maps/vs/loader.js
+/pxt-picode-maps/vs/base/worker/workerMain.js
+/pxt-picode-maps/vs/basic-languages/src/bat.js
+/pxt-picode-maps/vs/basic-languages/src/cpp.js
+/pxt-picode-maps/vs/basic-languages/src/python.js
+/pxt-picode-maps/vs/basic-languages/src/markdown.js
+/pxt-picode-maps/vs/editor/editor.main.css
+/pxt-picode-maps/vs/editor/editor.main.js
+/pxt-picode-maps/vs/editor/editor.main.nls.js
+/pxt-picode-maps/vs/language/json/jsonMode.js
+/pxt-picode-maps/vs/language/json/jsonWorker.js
+/pxt-picode-maps/vs/language/typescript/lib/typescriptServices.js
+/pxt-picode-maps/vs/language/typescript/src/mode.js
+/pxt-picode-maps/vs/language/typescript/src/worker.js
+
+# charts
+/pxt-picode-maps/smoothie/smoothie_compressed.js
+/pxt-picode-maps/images/Bars_black.gif
+
+# gifjs
+/pxt-picode-maps/gifjs/gif.js
+
+# ai
+/pxt-picode-maps/ai.0.js
+
+/pxt-picode-maps/worker.js
+/pxt-picode-maps/monacoworker.js
+
+# ver Thu Feb 11 2021 15:37:16 GMT-0300 (Horário Padrão de Brasília)
+
+# target
+/pxt-picode-maps/docs\static\logo.svg
+/pxt-picode-maps/docs\static\logo.svg
+/pxt-picode-maps/docs\static\logo.svg
+/pxt-picode-maps/docs\static\logo.svg
+/pxt-picode-maps/docs\static\organization.png
+/pxt-picode-maps/docs\static\organization.png
+/pxt-picode-maps/docs\static\hero.png
+
+/pxt-picode-maps/target.js
+  
+NETWORK:
+*
