@@ -461,8 +461,8 @@ var pxsim;
             createjs.Ticker.addEventListener("tick", _this.stage);
             var canvas = _this.stage.canvas;
             canvas.getContext("2d").imageSmoothingEnabled = true;
-            _this.xOffset = canvas.width / 2;
-            _this.yOffset = canvas.height / 2;
+            _this.xOffset = (canvas.width / 2) - 102;
+            _this.yOffset = (canvas.height / 2) + 102;
             var rect = _this.stage.addChild(new createjs.Shape());
             rect.graphics
                 .beginFill("#FF00FF00")
