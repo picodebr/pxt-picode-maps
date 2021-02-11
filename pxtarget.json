@@ -41,13 +41,51 @@
         "aspectRatio": 1
     },
     "appTheme": {
+        "accentColor": "#333",
+        "backgroundColor": "#808080",
+        "logoUrl": "http://picode.com.br/",
+        "logo": "./static/logo.svg",
+        "docsLogo": "./static/logo.svg",
+        "docsHeader": "Pi Code Platform",
+        "portraitLogo": "./static/logo.svg",
+        "footerLogo": "./static/logo.svg",
+        "organization": "PiCode Education",
+        "organizationUrl": "https://picode.com.br/",
+        "organizationLogo": "./static/organization.png",
+        "organizationWideLogo": "./static/organization.png",
+        "homeUrl": "https://picodebr.github.io/pxt-picode/",
+        "embedUrl": "https://picodebr.github.io/pxt-picode/",
+        "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
+        "termsOfUseUrl": "https://go.microsoft.com/fwlink/?LinkID=206977",
+        "feedbackUrl": "https://forum.makecode.com/",
+        "boardName": "board",
+        "homeScreenHero": "./static/hero.png",
+        "chooseBoardOnNewProject": true,
+        "invertedMenu": false,
+        "invertedToolbox": true,
+        "invertedMonaco": true,
+        "monacoToolbox": true,
+        "highContrast": false,
+        "greenScreen": true,
+        "blocksCollapsing": true,
+        "accessibleBlocks": true,
+        "simAnimationEnter": "fly right in",
+        "simAnimationExit": "fly right out",
+        "nameProjectFirst": true,
+        "blocklyOptions": {
+            "grid": {
+              "spacing": 20,
+              "length": 2,
+              "colour": "rgba(189, 195, 199, 0.20)",
+              "snap": true
+            }
+          },
         "availableLocales": [
             "en",
             "de"
         ],
         "selectLanguage": true,
         "docMenu": [],
-        "monacoToolbox": true,
         "githubUrl": "https://github.com/hwestphal/pxt-turtle"
     }
 }

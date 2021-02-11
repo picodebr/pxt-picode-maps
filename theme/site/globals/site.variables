@@ -1,0 +1,141 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@importGoogleFonts: false;
+
+@fontName  : 'Open Sans';
+
+@emSize      : 14px;
+@fontSize    : 13px;
+
+@primaryColor: @green;
+@secondaryColor: @grey;
+
+@lightgrey: #808080;
+
+@red:#ff6666;
+@yellow:#ffff7f;
+@teal:#08415C;
+@violet:#C200C0;
+@brown:#2E282A;
+@grey:#333333;
+
+/* Adafruit colors */
+@blue:#6699ff;
+@pink:#FB48C7;
+
+@green: #33cc66; /*#87fd21;*/
+@purple:#8073E5;
+@orange:#FFA702;
+
+@pageBackground: @grey;
+@serialTextColor: #333;
+
+@lightTextColor: rgba(255, 255, 255, 0.68);
+
+@invertedTextColor: #00f;
+
+/*******************************
+         PXT Overrides
+*******************************/
+
+/*-------------------
+   Menu
+--------------------*/
+
+@mainMenuBackground: @green;
+@mainMenuInvertedBackground: @green;
+@mainMenuTutorialBackground: @orange;
+
+@mainMenuBlocksJsToggleColor: @black;
+
+@tutorialSelectedMenuColor: @blue;
+
+/*-------------------
+   Layout
+--------------------*/
+
+@sideBarWidth: 23rem;
+@simulatorWidth: 24rem;
+@simulatorWidthSmall: 20rem;
+
+/*-------------------
+   Background
+--------------------*/
+
+@simulatorBackground: @grey;
+@editorToolsBackground: @simulatorBackground;
+@blocklySvgColor: #4c4b4d;
+
+@blocklyFlyoutColor : @green;
+@flyoutLabelColor: #555;
+@monacoFlyoutColor: rgba(40, 40, 40, 0.9);
+@monacoFlyoutText: fade(@white, 70%);
+@monacoFlyoutBorderColor: fade(@monacoFlyoutText, 40%);
+
+/*-------------------
+   Full screen
+--------------------*/
+
+@fullscreenBackgroundGradientStart: @mainMenuInvertedBackground;
+@fullscreenBackgroundGradientEnd: @grey;
+
+/*-------------------
+   Side Docs
+--------------------*/
+
+@mainMenuHeight: 3.0rem;
+
+@sidedocsButtonsTop: (@mainMenuHeight + 1rem);
+@sidedocsButtonsRight: 4.25rem;
+
+/*-------------------
+   Editor
+--------------------*/
+
+@blocklyToolboxColor: lighten(@grey, 10%);
+@trashIconColor: @primaryColor;
+
+
+/*-------------------
+   Blockly
+--------------------*/
+
+@blocklyRowWidthWide: 160px;
+@blocklyRowWidthComputer: 140px;
+
+@blocklyScrollbarColor: #000;
+@blocklyScrollbarOpacity: 0.8;
+
+@blocklyToolboxText: @green;
+
+/*-------------------
+   Home screen
+--------------------*/
+@homeScreenBackground: @grey;
+
+@homeCardBackgroundColor: @green;
+@homeHeaderColor: white;
+@homeCardColor: #000;
+@homeCardBorderRadius: 5px;
+@homeCardBorderSize: 2px;
+@homeCardBorderColor: lighten(@green, 10%);
+@homeCardHoverBorderColor: darken(@green, 10%);
+@homeCardImageBorderRadius: 5px;
+
+
+/*-------------------
+   Greenscreen
+--------------------*/
+
+@greenScreenBlockColor: #40bf4a;
+
+/*-------------------
+   Flyout
+--------------------*/
+
+@flyoutLabelColor: black;
+@blocklyFlyoutColor: #292F36;
+@blocklyFlyoutColorOpacity: 0.9;
+@monacoFlyoutColor: fade(@blocklyFlyoutColor, 90%);
