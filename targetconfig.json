@@ -17,8 +17,5 @@
             "ElectronicCats/pxt-airQuality",
             "ElectronicCats/pxt-lora"
         ]
-    },
-    "galleries": {
-        "Boards": "/boards"
     }
 }
