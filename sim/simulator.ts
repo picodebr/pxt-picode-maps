@@ -1,7 +1,6 @@
 /// <reference types="pxt-core/built/pxtsim" />
 
 namespace pxsim {
-
     initCurrentRuntime = () => {
         runtime.board = new TurtleBoard();
     };
@@ -12,12 +11,13 @@ namespace pxsim {
 
     export class TurtleBoard extends BaseBoard {
         x = 0;
-        y = 0;
+        y = 1;
         heading = 0;
-        pen = true;
+        pen = false;
         penSize = 2;
 
         private readonly stage: createjs.Stage;
+        private readonly image: createjs.Bitmap;
         private readonly xOffset: number;
         private readonly yOffset: number;
         private delay = delays[Speed.Normal];
@@ -27,13 +27,17 @@ namespace pxsim {
         constructor() {
             super();
             this.stage = new createjs.Stage("area");
+            this.image = new createjs.Bitmap("mapa.png");
+            this.stage.addChild(this.image);
             createjs.Ticker.addEventListener("tick", this.stage);
             const canvas = this.stage.canvas as HTMLCanvasElement;
-            canvas.getContext("2d")!.imageSmoothingEnabled = false;
+            canvas.getContext("2d")!.imageSmoothingEnabled = true;
             this.xOffset = canvas.width / 2;
             this.yOffset = canvas.height / 2;
             const rect = this.stage.addChild(new createjs.Shape());
-            rect.graphics.beginFill("white").rect(0, 0, canvas.width, canvas.height);
+            rect.graphics
+                .beginFill("#FF00FF00")
+                .rect(0, 0, canvas.width, canvas.height);
         }
 
         async initAsync(msg: SimulatorRunMessage) {
@@ -65,8 +69,8 @@ namespace pxsim {
         move(distance: number) {
             const x = this.x;
             const y = this.y;
-            this.x += distance * Math.sin(this.heading * Math.PI / 180);
-            this.y += distance * Math.cos(this.heading * Math.PI / 180);
+            this.x += distance * Math.sin((this.heading * Math.PI) / 180);
+            this.y += distance * Math.cos((this.heading * Math.PI) / 180);
             const tx = this.xOffset + this.x;
             const ty = this.yOffset - this.y;
             if (this.pen || this.turtleSprite!.visible) {
@@ -78,10 +82,14 @@ namespace pxsim {
                     .moveTo(this.xOffset + x, this.yOffset - y);
                 this.turtleToFront();
                 if (this.delay > 0) {
-                    const cmd = g.lineTo(this.xOffset + x, this.yOffset - y).command;
+                    const cmd = g.lineTo(this.xOffset + x, this.yOffset - y)
+                        .command;
                     const duration = this.delay * Math.abs(distance);
                     this.turtleSprite!.play();
-                    createjs.Tween.get(this.turtleSprite!).to({ x: tx, y: ty }, duration);
+                    createjs.Tween.get(this.turtleSprite!).to(
+                        { x: tx, y: ty },
+                        duration
+                    );
                     return new Promise<void>((resolve) => {
                         createjs.Tween.get(cmd)
                             .to({ x: tx, y: ty }, duration)
@@ -106,7 +114,10 @@ namespace pxsim {
                 this.turtleSprite!.play();
                 return new Promise<void>((resolve) => {
                     createjs.Tween.get(this.turtleSprite!)
-                        .to({ rotation: heading + angle }, this.delay * 0.5 * Math.abs(angle))
+                        .to(
+                            { rotation: heading + angle },
+                            this.delay * 0.5 * Math.abs(angle)
+                        )
                         .call(() => {
                             this.turtleSprite!.gotoAndStop(0);
                             this.turtleSprite!.rotation = this.heading;
@@ -122,9 +133,12 @@ namespace pxsim {
             if (this.x !== nx || this.y !== ny) {
                 const pen = this.pen;
                 this.pen = false;
-                const angle = Math.atan2(this.x - nx, this.y - ny) * 180 / Math.PI;
+                const angle =
+                    (Math.atan2(this.x - nx, this.y - ny) * 180) / Math.PI;
                 await this.turn(normalize(angle - this.heading - 180));
-                await this.move(Math.sqrt((this.x - nx) ** 2 + (this.y - ny) ** 2));
+                await this.move(
+                    Math.sqrt((this.x - nx) ** 2 + (this.y - ny) ** 2)
+                );
                 this.pen = pen;
             }
             await this.turn(normalize(nh - this.heading));
@@ -137,7 +151,13 @@ namespace pxsim {
         }
 
         async print(text: string, move: boolean) {
-            const t = this.stage.addChild(new createjs.Text(text, `${8 + this.penSize * 2}px monospace`, this.color));
+            const t = this.stage.addChild(
+                new createjs.Text(
+                    text,
+                    `${8 + this.penSize * 2}px monospace`,
+                    this.color
+                )
+            );
             t.x = this.xOffset + this.x;
             t.y = this.yOffset - this.y;
             t.rotation = this.heading - 90;
@@ -170,9 +190,11 @@ namespace pxsim {
         }
 
         private turtleToFront() {
-            this.stage.setChildIndex(this.turtleSprite!, this.stage.numChildren - 1);
+            this.stage.setChildIndex(
+                this.turtleSprite!,
+                this.stage.numChildren - 1
+            );
         }
-
     }
 
     function normalize(a: number) {
@@ -189,7 +211,12 @@ namespace pxsim {
 
     export function log(msg: string) {
         // tslint:disable-next-line:no-console
-        console.log(`%c${toLocalISOString(new Date())} %c[TURTLE]`, "color: blue; font-style: italic", "font-weight: bold", msg);
+        console.log(
+            `%c${toLocalISOString(new Date())} %c[TURTLE]`,
+            "color: blue; font-style: italic",
+            "font-weight: bold",
+            msg
+        );
     }
 
     function toLocalISOString(date: Date) {
@@ -205,7 +232,7 @@ namespace pxsim {
         const data = buffer.data.slice(8);
         const array = new Uint8ClampedArray(width * height * 4);
         for (let i = 0; i < data.length; i++) {
-            const x = Math.floor(2 * i / dataHeight);
+            const x = Math.floor((2 * i) / dataHeight);
             const y = (2 * i) % dataHeight;
             setColor(data[i] & 0x0f, array, width, x, y);
             setColor(data[i] >> 4, array, width, x, y + 1);
@@ -213,12 +240,14 @@ namespace pxsim {
         const canvas = document.createElement("canvas");
         canvas.width = width;
         canvas.height = height;
-        canvas.getContext("2d")!.putImageData(new ImageData(array, width, height), 0, 0);
+        canvas
+            .getContext("2d")!
+            .putImageData(new ImageData(array, width, height), 0, 0);
         return new SpriteImpl(canvas);
     }
 
     export class SpriteImpl implements Sprite {
-        constructor(public canvas: HTMLCanvasElement) { }
+        constructor(public canvas: HTMLCanvasElement) {}
 
         get width() {
             return this.canvas.width;
@@ -255,7 +284,13 @@ namespace pxsim {
         [0x99, 0x99, 0x99],
     ];
 
-    function setColor(color: number, data: Uint8Array, width: number, x: number, y: number) {
+    function setColor(
+        color: number,
+        data: Uint8Array,
+        width: number,
+        x: number,
+        y: number
+    ) {
         if (color > 0) {
             color -= 1;
             const i = 4 * (x + y * width);
@@ -265,5 +300,4 @@ namespace pxsim {
             data[i + 3] = 0xff;
         }
     }
-
 }

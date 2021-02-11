@@ -1,201 +1,254 @@
 /// <reference types="../libs/core/enums" />
 
-namespace pxsim.turtle {
+namespace pxsim.PiCode {
     /**
-     * Move the turtle forward
-     * @param distance distance to move, eg: 50
+     * Anda uma casa para frente
      */
-    //% weight=90
-    //% blockId=turtleForward block="forward %distance steps"
-    export async function forwardAsync(distance: number) {
-        await board().move(distance);
+    //% weight=100
+    //% blockId=turtleForwardField block="Andar uma casa para frente"
+    export async function forwardFieldAsync() {
+        await board().move(51);
     }
 
     /**
-     * Move the turtle backward
-     * @param distance distance to move, eg: 50
+     * Anda uma casa para trás
      */
-    //% weight=85
-    //% blockId=turtleBackward block="backward %distance steps"
-    export async function backwardAsync(distance: number) {
-        await board().move(-distance);
+    //% weight=100
+    //% blockId=turtleBackwardField block="Andar uma casa para trás"
+    export async function backwardFieldAsync() {
+        await board().move(-51);
     }
 
     /**
-     * Turn the turtle to the right
-     * @param angle degrees to turn, eg: 90
+     * Girar para a direita
      */
-    //% weight=80
-    //% blockId=turtleTurnRight block="turn right by %angle degrees"
-    //% angle.min=0 angle.max=360
-    export async function turnRightAsync(angle: number) {
-        await board().turn(angle);
+    //% weight=99
+    //% blockId=turtleTurnRightField block="Girar para a direita"
+    export async function turnRightFieldAsync() {
+        await board().turn(90);
     }
 
     /**
-     * Turn the turtle to the left
-     * @param angle degrees to turn, eg: 90
+     * Girar para a esquerda
      */
-    //% weight=75
-    //% blockId=turtleTurnLeft block="turn left by %angle degrees"
-    //% angle.min=0 angle.max=360
-    export async function turnLeftAsync(angle: number) {
-        await board().turn(-angle);
+    //% weight=99
+    //% blockId=turtleTurnLeftField block="Girar para a esquerda"
+    export async function turnLeftFieldAsync() {
+        await board().turn(-90);
     }
 
     /**
-     * Pull the pen up
+     * Girar 45 para a direita
+     */
+    //% weight=98
+    //% blockId=turtleTurnHalfRightField block="Girar 45 para a direita"
+    export async function turnHalfRightFieldAsync() {
+        await board().turn(45);
+    }
+
+    /**
+     * Girar 45 para a esquerda
+     */
+    //% weight=98
+    //% blockId=turtleTurnHalfLeftField block="Girar 45 para a esquerda"
+    export async function turnHalfLeftFieldAsync() {
+        await board().turn(-45);
+    }
+
+    // /**
+    //  * Move the turtle forward
+    //  * @param distance distance to move, eg: 80
+    //  */
+    // //% weight=90
+    // //% blockId=turtleForward block="forward %distance steps"
+    // export async function forwardAsync(distance: number) {
+    //     await board().move(distance);
+    // }
+
+    // /**
+    //  * Move the turtle backward
+    //  * @param distance distance to move, eg: 50
+    //  */
+    // //% weight=85
+    // //% blockId=turtleBackward block="backward %distance steps"
+    // export async function backwardAsync(distance: number) {
+    //     await board().move(-distance);
+    // }
+
+    // /**
+    //  * Turn the turtle to the right
+    //  * @param angle degrees to turn, eg: 90
+    //  */
+    // //% weight=80
+    // //% blockId=turtleTurnRight block="turn right by %angle degrees"
+    // //% angle.min=0 angle.max=360
+    // export async function turnRightAsync(angle: number) {
+    //     await board().turn(angle);
+    // }
+
+    // /**
+    //  * Turn the turtle to the left
+    //  * @param angle degrees to turn, eg: 90
+    //  */
+    // //% weight=75
+    // //% blockId=turtleTurnLeft block="turn left by %angle degrees"
+    // //% angle.min=0 angle.max=360
+    // export async function turnLeftAsync(angle: number) {
+    //     await board().turn(-angle);
+    // }
+
+    /**
+     * Desligar caneta
      */
     //% weight=70
-    //% blockId=turtlePenUp block="pull the pen up"
+    //% blockId=turtlePenUp block="Desligar caneta"
     export function penUp() {
         board().pen = false;
     }
 
     /**
-     * Pull the pen down
+     * Ligar a caneta
      */
     //% weight=65
-    //% blockId=turtlePenDown block="pull the pen down"
+    //% blockId=turtlePenDown block="Ligar a caneta"
     export function penDown() {
         board().pen = true;
     }
 
-    /**
-     * Move the turtle to the origin and set heading to 0
-     */
-    //% weight=60
-    //% blockId=turtleHome block="back to home"
-    export async function homeAsync() {
-        await board().moveTo(0, 0, 0);
-    }
+    // /**
+    //  * Move the turtle to the origin and set heading to 0
+    //  */
+    // //% weight=60
+    // //% blockId=turtleHome block="back to home"
+    // export async function homeAsync() {
+    //     await board().moveTo(0, 0, 0);
+    // }
 
-    /**
-     * X position of the turtle
-     */
-    //% weight=55
-    //% blockId=turtleX block="x position"
-    export function x() {
-        return board().x;
-    }
+    // /**
+    //  * X position of the turtle
+    //  */
+    // //% weight=55
+    // //% blockId=turtleX block="x position"
+    // export function x() {
+    //     return board().x;
+    // }
 
-    /**
-     * Y position of the turtle
-     */
-    //% weight=54
-    //% blockId=turtleY block="y position"
-    export function y() {
-        return board().y;
-    }
+    // /**
+    //  * Y position of the turtle
+    //  */
+    // //% weight=54
+    // //% blockId=turtleY block="y position"
+    // export function y() {
+    //     return board().y;
+    // }
 
-    /**
-     * Heading of the turtle
-     */
-    //% weight=53
-    //% blockId=turtleHeading block="heading"
-    export function heading() {
-        return board().heading;
-    }
+    // /**
+    //  * Heading of the turtle
+    //  */
+    // //% weight=53
+    // //% blockId=turtleHeading block="heading"
+    // export function heading() {
+    //     return board().heading;
+    // }
 
-    /**
-     * Set the speed of the turtle
-     * @param speed turtle speed, eg: Speed.Fast
-     */
-    //% weight=40
-    //% blockId=turtleSpeed block="set speed to %speed"
-    export function setSpeed(speed: Speed) {
-        board().speed = speed;
-    }
+    // /**
+    //  * Set the speed of the turtle
+    //  * @param speed turtle speed, eg: Speed.Fast
+    //  */
+    // //% weight=40
+    // //% blockId=turtleSpeed block="set speed to %speed"
+    // export function setSpeed(speed: Speed) {
+    //     board().speed = speed;
+    // }
 
-    /**
-     * Set the pen color
-     * @param color pen color, eg: 0x007fff
-     */
-    //% weight=50
-    //% blockId="turtlePenColor" block="set pen color to %color=colorNumberPicker"
-    export function setPenColor(color: number) {
-        board().penColor = color;
-    }
+    // /**
+    //  * Set the pen color
+    //  * @param color pen color, eg: 0x007fff
+    //  */
+    // //% weight=50
+    // //% blockId="turtlePenColor" block="set pen color to %color=colorNumberPicker"
+    // export function setPenColor(color: number) {
+    //     board().penColor = color;
+    // }
 
-    /**
-     * Set the pen size
-     * @param size pen size, eg: 3
-     */
-    //% weight=45
-    //% blockId="turtlePenSize" block="set pen size to %size"
-    //% size.min=1 size.max=10
-    export function setPenSize(size: number) {
-        board().penSize = size;
-    }
+    // /**
+    //  * Set the pen size
+    //  * @param size pen size, eg: 3
+    //  */
+    // //% weight=45
+    // //% blockId="turtlePenSize" block="set pen size to %size"
+    // //% size.min=1 size.max=10
+    // export function setPenSize(size: number) {
+    //     board().penSize = size;
+    // }
 
-    /**
-     * Show the turtle
-     */
-    //% weight=30
-    //% blockId=turtleShow block="show turtle"
-    export function show() {
-        board().turtle = true;
-    }
+    // /**
+    //  * Show the turtle
+    //  */
+    // //% weight=30
+    // //% blockId=turtleShow block="show turtle"
+    // export function show() {
+    //     board().turtle = true;
+    // }
 
-    /**
-     * Hide the turtle
-     */
-    //% weight=35
-    //% blockId=turtleHide block="hide turtle"
-    export function hide() {
-        board().turtle = false;
-    }
+    // /**
+    //  * Hide the turtle
+    //  */
+    // //% weight=35
+    // //% blockId=turtleHide block="hide turtle"
+    // export function hide() {
+    //     board().turtle = false;
+    // }
 
-    /**
-     * Move the turtle to the given position
-     * @param xpos x position
-     * @param ypos y position
-     */
-    //% weight=29
-    //% blockId=turtleGoto block="goto x=%xpos and y=%ypos"
-    export async function gotoAsync(xpos: number, ypos: number) {
-        await board().moveTo(xpos, ypos, board().heading);
-    }
+    // /**
+    //  * Move the turtle to the given position
+    //  * @param xpos x position
+    //  * @param ypos y position
+    //  */
+    // //% weight=29
+    // //% blockId=turtleGoto block="goto x=%xpos and y=%ypos"
+    // export async function gotoAsync(xpos: number, ypos: number) {
+    //     await board().moveTo(xpos, ypos, board().heading);
+    // }
 
-    /**
-     * Print a text and move forward
-     * @param text text to print, eg: "Hello World"
-     */
-    //% weight=20
-    //% blockId=turtlePrintAndMove block="print %text and move forward"
-    export async function printAndMoveAsync(text: string) {
-        await board().print(text, true);
-    }
+    // /**
+    //  * Print a text and move forward
+    //  * @param text text to print, eg: "Hello World"
+    //  */
+    // //% weight=20
+    // //% blockId=turtlePrintAndMove block="print %text and move forward"
+    // export async function printAndMoveAsync(text: string) {
+    //     await board().print(text, true);
+    // }
 
-    /**
-     * Print a text and stand still
-     * @param text text to print, eg: "Hello World"
-     */
-    //% weight=25
-    //% blockId=turtlePrint block="print %text"
-    export async function printAsync(text: string) {
-        await board().print(text, false);
-    }
+    // /**
+    //  * Print a text and stand still
+    //  * @param text text to print, eg: "Hello World"
+    //  */
+    // //% weight=25
+    // //% blockId=turtlePrint block="print %text"
+    // export async function printAsync(text: string) {
+    //     await board().print(text, false);
+    // }
 
-    /**
-     * Clear the canvas
-     */
-    //% weight=15
-    //% blockId=turtleClear block="clear the canvas"
-    export function clear() {
-        board().clear();
-    }
+    // /**
+    //  * Clear the canvas
+    //  */
+    // //% weight=15
+    // //% blockId=turtleClear block="clear the canvas"
+    // export function clear() {
+    //     board().clear();
+    // }
 
-    /**
-     * Draw sprite
-     * @param sprite sprite to draw, eg: img``
-     */
-    //% weight=5
-    //% blockId=turtleDrawSprite block="draw %sprite=spriteEditor"
-    export function drawSprite(sprite: Sprite) {
-        board().drawSprite(sprite as SpriteImpl);
-    }
-
+    // /**
+    //  * Draw sprite
+    //  * @param sprite sprite to draw, eg: img``
+    //  */
+    // //% weight=5
+    // //% blockId=turtleDrawSprite block="draw %sprite=spriteEditor"
+    // export function drawSprite(sprite: Sprite) {
+    //     board().drawSprite(sprite as SpriteImpl);
+    // }
 }
 
 namespace pxsim.time {
@@ -283,5 +336,4 @@ namespace pxsim.time {
         d.setTime(ts * 1000);
         return d;
     }
-
 }

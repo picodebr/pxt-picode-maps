@@ -1,5 +1,4 @@
 namespace pxsim {
-
     export async function createTurtleSprite() {
         return new createjs.Sprite(await turtleSpriteSheet(), "default");
     }
@@ -9,12 +8,13 @@ namespace pxsim {
             return turtleSpriteSheet.cached;
         }
         const ssb = new createjs.SpriteSheetBuilder();
-        (await loadImages("turtle1.svg", "turtle2.svg", "turtle3.svg")).map((i) => {
-            i.regX = 218;
-            i.regY = 265;
-            ssb.addFrame(i, undefined, 0.06);
-        });
-        ssb.addAnimation("default", [0, 1, 0, 2], undefined, 0.4);
+        (await loadImages("picode.png", "picode.png", "picode.png")).map(
+            (i) => {
+                i.regX = 380;
+                i.regY = 293;
+                ssb.addFrame(i, undefined, 0.06);
+            }
+        );
         turtleSpriteSheet.cached = ssb.build();
         return turtleSpriteSheet.cached;
     }
@@ -34,9 +34,12 @@ namespace pxsim {
                 reject(e);
             });
             queue.addEventListener("complete", () => {
-                resolve(queue.getItems(true).map((i) => new createjs.Bitmap((i as any).result)));
+                resolve(
+                    queue
+                        .getItems(true)
+                        .map((i) => new createjs.Bitmap((i as any).result))
+                );
             });
         });
     }
-
 }
